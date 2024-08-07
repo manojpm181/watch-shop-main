@@ -1,0 +1,27 @@
+{% extends 'main.html' %} {% block body_block %} {% for item in user_products %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img
+        src="{{item.image.url}}"
+        alt="Not Available"
+        class="img-fluid product-img"
+      />
+    </div>
+    <div class="col-md-6 product_descrpition">
+      <h2>{{item.name}}</h2>
+      <h3>Amount : Rs {{item.price}}</h3>
+      <p>{{item.description }}</p>
+
+      {% if isCart %}
+      <a href="{% url 'removeCart' id=item.id %}" class="btn btn-primary"
+        >Remove</a
+      >{% else %}
+      <a href="{% url 'removewish' id=item.id %}" class="btn btn-primary"
+        >Remove</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}

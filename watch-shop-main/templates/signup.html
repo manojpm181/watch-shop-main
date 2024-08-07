@@ -1,0 +1,13 @@
+{% extends 'main.html' %} {% block body_block %}
+
+<div class="watchupload-wraper">
+  <form method="post" enctype="multipart/form-data" class="watch-form">
+    {% csrf_token %} {{form.as_p}}
+
+    <button type="submit" class="btn btn-lg btn-primary btn-block c-button">
+      Create
+    </button>
+  </form>
+</div>
+
+{% endblock %}

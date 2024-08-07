@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      .col {
+        margin: 10px;
+      }
+
+      .watchupload-wraper {
+        margin-top: 80px;
+        margin-bottom: 80px;
+      }
+
+      .watch-form {
+        max-width: 380px;
+        padding: 15px 35px 45px;
+        margin: 0 auto;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+      }
+
+      .form-control {
+        position: relative;
+        font-size: 16px;
+        height: auto;
+        padding: 10px;
+      }
+
+      .c-button {
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+
+      .product_descrpition {
+        padding-left: 20px;
+      }
+
+      .product-img {
+        max-width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- navigation bar  -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Watch Shop</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{%  url 'home' %}"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'upload_images' %}"
+                >Upload Data</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_wishlist' %}">WishList</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'show_cartlist' %}">Cart</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+
+          {% if user.is_authenticated %}
+          <h5>{{ user.username}}</h5>
+          <a class="nav-link btn btn-outline-info" href="{% url 'logout' %}"
+            >Logout</a
+          >
+          {% else %}
+          <a class="nav-link btn btn-outline-info" href="{% url 'login' %}"
+            >Login</a
+          >
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    {% block body_block %} {% endblock %}
+    <!-- 
+    <div
+      class="container"
+      style="background-color: aliceblue; text-align: center; position: sticky"
+    >
+      <h1>This is footer part</h1>
+    </div> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

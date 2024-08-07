@@ -1,0 +1,20 @@
+{% extends 'main.html' %} {% block body_block %}
+
+<div class="watchupload-wraper">
+  <form method="post" enctype="multipart/form-data" class="watch-form">
+    {% csrf_token %} {{form.as_p}}
+
+    <button type="submit" class="btn btn-lg btn-primary btn-block c-button">
+      Login
+    </button>
+    <a
+      href="{%  url 'signup' %}"
+      type="button"
+      class="btn btn-lg btn-primary btn-block c-button"
+    >
+      SignUp</a
+    >
+  </form>
+</div>
+
+{% endblock %}

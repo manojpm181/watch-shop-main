@@ -1,0 +1,93 @@
+{% extends 'main.html' %} {% block body_block %}
+<!-- courosal section bar  -->
+{% load static %}
+<div class="content">
+  <div
+    id="carouselExampleControls"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="{% static 'homepage/images/sample1.jpg' %}"
+          class="d-block w-100 h-50"
+          alt="..."
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="{% static 'homepage/images/sample1.jpg' %}"
+          class="d-block w-100 h-50"
+          class="d-block w-100 h-50"
+          alt="..."
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="{% static 'homepage/images/sample1.jpg' %}"
+          class="d-block w-100 h-50"
+          class="d-block w-100 h-50"
+          alt="..."
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<!-- offer section bar  -->
+<div
+  style="
+    background-color: beige;
+    width: 100%;
+    text-align: center;
+    height: 50x;
+    margin: 10px;
+  "
+>
+  <h5>we are offering 50% on all of our products</h5>
+</div>
+
+<div class="row">
+  {% for w_item in watches_t %}
+  <div class="col">
+    <div class="card" style="width: 18rem">
+      <img src="{{w_item.image.url}}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{w_item.name}} - {{w_item.price}}</h5>
+        <p class="card-text">{{w_item.description}}</p>
+        <a href="{% url 'product' id=w_item.id %}" class="btn btn-primary"
+          >View Prodct</a
+        >
+        <a href="{% url 'addtowish' id=w_item.id %}" class="btn btn-primary"
+          >+Wishlist</a
+        >
+
+        <a href="{% url 'addtocart' id=w_item.id %}" class="btn btn-primary"
+          >+Cart</a
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
